@@ -1,0 +1,4 @@
+services:
+#    fast_vps_cpanel.example:
+#        class: FastVPS\CpanelBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

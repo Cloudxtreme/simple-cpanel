@@ -1,0 +1,3 @@
+fast_vps_cpanel:
+    resource: "@FastVPSCpanelBundle/Resources/config/routing.yml"
+    prefix:   /
