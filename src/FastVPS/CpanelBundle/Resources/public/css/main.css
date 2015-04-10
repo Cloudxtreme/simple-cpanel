@@ -1,4 +1,4 @@
-#title, #hostlist, #newhost_button {
+#title, #hostlist, #newhost_button, #copyright {
     margin-left: 40px !important;
 }
 
@@ -28,4 +28,9 @@
 .removehost_button a {
     background: #F76363;
     color: #ffffff;
+}
+
+#copyright {
+    margin-top: 30px;
+    font-size: 10px;
 }

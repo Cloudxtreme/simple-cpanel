@@ -1,3 +1,15 @@
 fast_vps_cpanel_homepage:
     path:     /
     defaults: { _controller: FastVPSCpanelBundle:Host:hostList }
+
+fast_vps_cpanel_newhost:
+    path:     /newhost
+    defaults: { _controller: FastVPSCpanelBundle:Host:newHost }
+
+fast_vps_cpanel_edithost:
+    path:     /edithost/{id}
+    defaults: { _controller: FastVPSCpanelBundle:Host:editHost}
+
+fast_vps_cpanel_removehost:
+    path:     /removehost/{id}
+    defaults: { _controller: FastVPSCpanelBundle:Host:removeHost }

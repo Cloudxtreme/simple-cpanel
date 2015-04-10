@@ -9,7 +9,9 @@ class NewHostType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('hostname', 'text');
+        $builder
+            ->add('hostname', 'text')
+            ->add('save', 'submit', array('label' => 'Create Host'));
     }
 
     public function getName()

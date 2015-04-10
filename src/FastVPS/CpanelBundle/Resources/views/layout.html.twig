@@ -1,0 +1,30 @@
+{% extends "::base.html.twig" %}
+
+{% block title 'Cpanel Bundle' %}
+
+    {% block head %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+
+            {% stylesheets '@FastVPSCpanelBundle/Resources/public/css/main.css' %}
+            <link rel="stylesheet" type="text/css" media="all" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
+    {% endblock %}
+
+    {% block body %}
+
+        {% block label %}
+            <div id="title"><h1>FastVPS Simple Cpanel</h1></div>
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+
+        {% block copyright %}
+            <div id="copyright">
+                <a href="http://github.com/perkelekurat" target="_blank">Artem Antcev (GitHub)</a>
+            </div>
+        {% endblock %}
+
+    {% endblock %}
