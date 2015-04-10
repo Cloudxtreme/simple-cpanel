@@ -1,0 +1,33 @@
+{% extends "::base.html.twig" %}
+
+{% block title 'Cpanel Bundle' %}
+
+    {% block head %}
+        {% block stylesheets %}
+            {% stylesheets '@FastVPSCpanelBundle/Resources/public/css/main.css' %}
+                <link rel="stylesheet" type="text/css" media="all" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
+    {% endblock %}
+
+    {% block body %}
+
+        <div id="title"><h1>FastVPS Simple Cpanel</h1></div>
+
+        <div id="newhost_button"><a class="pure-button" href="#">New Host</a></div>
+
+        <table id="hostlist">
+            <tr>
+                <td><strong>Host</strong></td>
+                <td><strong>Full path</strong></td>
+
+            </tr>
+            <tr id="hostrow">
+                <td>demo.ee</td>
+                <td>/home/www/demo.ee</td>
+                <td><div class="edithost_button"><a class="pure-button" href="#">Edit</a></div></td>
+                <td><div class="removehost_button"><a class="pure-button" href="#">Remove</a></div></td>
+            </tr>
+        </table>
+
+{% endblock %}

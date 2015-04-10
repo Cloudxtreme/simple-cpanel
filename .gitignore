@@ -27,3 +27,5 @@
 /build/
 
 /composer.phar
+
+/.idea/

@@ -5,16 +5,15 @@ namespace FastVPS\CpanelBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class LoginType extends AbstractType
+class EditHostType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('login', 'text');
-        $builder->add('password', 'password');
+        $builder->add('hostname', 'text');
     }
 
     public function getName()
     {
-        return 'login';
+        return 'newHost';
     }
 }
