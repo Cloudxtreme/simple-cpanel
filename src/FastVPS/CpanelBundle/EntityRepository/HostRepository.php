@@ -27,13 +27,19 @@ class HostRepository extends EntityRepository {
 
     public function findOneById($id) {
 
-        $q = $this->getEntityManager()
-            ->createQuery("SELECT h
-                               FROM FastVPSCpanelBundle:Host h
-                               WHERE h.hostName = " . $id);
+        $result = $this->getEntityManager()
+            ->createQueryBuilder()
+            ->setParameter('id', $id)
+            ->select('q')
+            ->from('FastVPSCpanelBundle:Host', 'q')
+            ->where('q.id = :id')
+            ->orderBy('q.hostName', 'ASC')
+            ->getQuery()
+            ->getSingleResult();
 
-        return $q->getResult();
 
+
+        return $result;
 
     }
 

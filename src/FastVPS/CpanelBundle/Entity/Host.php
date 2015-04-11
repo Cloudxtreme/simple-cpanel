@@ -27,11 +27,6 @@ class Host {
      */
     private $hostName;
 
-    /**
-     * @Column(length=140, type="string", name="host_pool_dir")
-     */
-    private $hostPoolDir;
-
     /** @Column(type="datetime", name="creation_date") */
     private $creationDate;
 
@@ -61,14 +56,6 @@ class Host {
 
     public function getCreationDate() {
         return $this->creationDate;
-    }
-
-    public function setHostPoolDir($hostPoolDir) {
-        $this->hostPoolDir = $hostPoolDir;
-    }
-
-    public function getHostPoolDir() {
-        return $this->hostPoolDir;
     }
 
 }

@@ -4,36 +4,48 @@ namespace FastVPS\CpanelBundle\Handler;
 
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOException;
+use FastVPS\CpanelBundle\Entity\Host;
 
 class VirtualHostHandler {
 
-    private $hostPoolDir;
+    private $nginxConfDir;
+    private $nginxHostsDir;
 
-    public function __construct() {
+    public function __construct($vconfDir, $hostsDir) {
 
-        $this->hostPoolDir = getenv('HOME') . "/www";
+        $this->nginxConfDir = $vconfDir;
+        $this->nginxHostsDir = $hostsDir;
+
+        $this->nonExistentField = "php is so fucked up";
+
 
     }
 
-    public function getHostPoolDir() {
-        return $this->hostPoolDir;
-    }
-
-    public function createHostFile() {
+    public function createHostFile(Host $host) {
 
         self::reloadNginx();
     }
 
-    public function editHostFile() {
+    public function editHostFile(Host $host) {
 
         self::reloadNginx();
     }
 
-    public function removeHostFile() {
+    public function removeHostFile(Host $host) {
 
         self::reloadNginx();
     }
 
     public static function reloadNginx() {}
+
+    public function getNginxConfDir() {
+
+        return $this->nginxConfDir;
+    }
+
+    public function getNginxHostsDir() {
+
+        return $this->nginxHostsDir;
+    }
 
 }
