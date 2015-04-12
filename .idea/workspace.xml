@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0db3fcf8-f5cb-4bf0-94c3-98af9e0d10c1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/FastVPS/CpanelBundle/Resources/template/index.html.dist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FastVPS/CpanelBundle/Controller/HostController.php" afterPath="$PROJECT_DIR$/src/FastVPS/CpanelBundle/Controller/HostController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FastVPS/CpanelBundle/Handler/VirtualHostHandler.php" afterPath="$PROJECT_DIR$/src/FastVPS/CpanelBundle/Handler/VirtualHostHandler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FastVPS/CpanelBundle/Resources/views/Host/edithost.html.twig" afterPath="$PROJECT_DIR$/src/FastVPS/CpanelBundle/Resources/views/Host/edithost.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FastVPS/CpanelBundle/Resources/views/Host/hostlist.html.twig" afterPath="$PROJECT_DIR$/src/FastVPS/CpanelBundle/Resources/views/Host/hostlist.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FastVPS/CpanelBundle/Resources/config/services.yml" afterPath="$PROJECT_DIR$/src/FastVPS/CpanelBundle/Resources/config/services.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <ignored path="simple-cpanel.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VirtualHostHandler.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="VirtualHostHandler.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FastVPS/CpanelBundle/Handler/VirtualHostHandler.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="5.5025907" vertical-offset="540" max-vertical-offset="2808">
-              <caret line="148" column="5" selection-start-line="148" selection-start-column="5" selection-end-line="148" selection-end-column="5" />
+            <state vertical-scroll-proportion="-10.666667" vertical-offset="540" max-vertical-offset="2808">
+              <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
               <folding>
                 <element signature="e#48#92#0#PHP" expanded="true" />
               </folding>
@@ -67,21 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Filesystem.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Filesystem.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Filesystem/Filesystem.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.074074" vertical-offset="205" max-vertical-offset="8694">
+            <state vertical-scroll-proportion="0.7746114" vertical-offset="205" max-vertical-offset="8694">
               <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="services.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/FastVPS/CpanelBundle/Resources/config/services.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="252">
-              <caret line="8" column="107" selection-start-line="8" selection-start-column="107" selection-end-line="8" selection-end-column="107" />
               <folding />
             </state>
           </provider>
@@ -116,7 +101,6 @@
         <option value="$PROJECT_DIR$/src/FastVPS/CpanelBundle/Model/VirtualHost.php" />
         <option value="$PROJECT_DIR$/src/FastVPS/CpanelBundle/CpanelBundle.php" />
         <option value="$PROJECT_DIR$/app/config/routing.yml" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/FastVPS/CpanelBundle/Form/LoginType.php" />
         <option value="$PROJECT_DIR$/src/FastVPS/CpanelBundle/Form/RegisterType.php" />
         <option value="$PROJECT_DIR$/src/FastVPS/CpanelBundle/Resources/views/Base/index.html.twig" />
@@ -145,6 +129,7 @@
         <option value="$PROJECT_DIR$/src/FastVPS/CpanelBundle/Resources/config/services.yml" />
         <option value="$PROJECT_DIR$/src/FastVPS/CpanelBundle/Controller/HostController.php" />
         <option value="$PROJECT_DIR$/src/FastVPS/CpanelBundle/Handler/VirtualHostHandler.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -784,7 +769,13 @@
       <option name="project" value="LOCAL" />
       <updated>1428769120654</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="new feature: website directories are creating now!">
+      <created>1428862917076</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1428862917076</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -793,6 +784,7 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988167" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -805,7 +797,6 @@
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -833,7 +824,9 @@
     <MESSAGE value="app simplification" />
     <MESSAGE value="EntityRepository implementation #1" />
     <MESSAGE value="edit/remove/new host implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit/remove/new host implementation" />
+    <MESSAGE value="added possibility to create website directories" />
+    <MESSAGE value="new feature: website directories are creating now!" />
+    <option name="LAST_COMMIT_MESSAGE" value="new feature: website directories are creating now!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -944,13 +937,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="426">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8450704" vertical-offset="0" max-vertical-offset="612">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1181,26 +1167,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FastVPS/CpanelBundle/Resources/config/services.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="252">
-          <caret line="8" column="107" selection-start-line="8" selection-start-column="107" selection-end-line="8" selection-end-column="107" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/FastVPS/CpanelBundle/Form/NewHostType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.333333" vertical-offset="0" max-vertical-offset="468">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Filesystem/Filesystem.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.074074" vertical-offset="205" max-vertical-offset="8694">
-          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -1217,11 +1187,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FastVPS/CpanelBundle/Handler/VirtualHostHandler.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.5025907" vertical-offset="540" max-vertical-offset="2808">
-          <caret line="148" column="5" selection-start-line="148" selection-start-column="5" selection-end-line="148" selection-end-column="5" />
+        <state vertical-scroll-proportion="-10.666667" vertical-offset="540" max-vertical-offset="2808">
+          <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
           <folding>
             <element signature="e#48#92#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.12676056" vertical-offset="216" max-vertical-offset="666">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FastVPS/CpanelBundle/Resources/config/services.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34866828" vertical-offset="0" max-vertical-offset="413">
+          <caret line="8" column="107" selection-start-line="8" selection-start-column="107" selection-end-line="8" selection-end-column="107" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Filesystem/Filesystem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7746114" vertical-offset="205" max-vertical-offset="8694">
+          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
