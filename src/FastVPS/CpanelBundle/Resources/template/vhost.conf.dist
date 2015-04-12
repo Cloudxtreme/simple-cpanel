@@ -1,0 +1,3 @@
+location /%relpath% {
+    index index.html;
+}

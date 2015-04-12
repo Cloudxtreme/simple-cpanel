@@ -1,9 +1,4 @@
-parameters:
-    virtual_host_handler.nginx_vconf_dir: /etc/nginx/sites-enabled/
-    virtual_host_handler.nginx_hosts_dir: /var/www/
-
-
 services:
     virtual_host_handler:
         class:        FastVPS\CpanelBundle\Handler\VirtualHostHandler
-        arguments:    ["%virtual_host_handler.nginx_vconf_dir%", "%virtual_host_handler.nginx_hosts_dir%", @file_locator]
+        arguments:    ["%vhost.nginx_conf_dir%", "%vhost.nginx_hosts_dir%", "%vhost.nginx_reload_command%", @file_locator]

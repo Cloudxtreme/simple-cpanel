@@ -10,76 +10,86 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
 
-class VirtualHostHandler {
+class VirtualHostHandler implements VirtualHostHandlerInterface {
 
-    public static $IO_ERROR = "IO_ERROR";
-    public static $NGINX_RESTART_ERROR = "NGINX_RESTART_ERROR";
-    public static $SUCCESS= "SUCCESS";
+    const IO_ERROR = "IO_ERROR";
+    const NGINX_RESTART_ERROR = "NGINX_RESTART_ERROR";
+    const SUCCESS= "SUCCESS";
+
+    private static $CONF_EXTENSION = ".conf";
+    private static $INDEX_FILENAME = "index.html";
 
     private $nginxConfDir;
     private $nginxHostsDir;
 
+    private $indexTemplatePath;
+    private $confTemplatePath;
+
     private $fs;
-
-    private $indexTemplateFilePath;
-    private $confTemplateFilePath;
+    private $reloadNginxCommand;
 
 
-    public function __construct($confDir, $hostsDir, FileLocator $fileLocator) {
+    public function __construct($confDir, $hostsDir, $reloadNginxCommand, FileLocator $fileLocator) {
 
         $this->nginxConfDir = $confDir;
         $this->nginxHostsDir = $hostsDir;
+        $this->reloadNginxCommand = $reloadNginxCommand;
 
         $this->fs = new Filesystem();
 
-        $this->indexTemplateFilePath = $fileLocator
+        $this->indexTemplatePath = $fileLocator
             ->locate('@FastVPSCpanelBundle/Resources/template/index.html.dist');
 
-        $this->confTemplateFilePath = $fileLocator
+        $this->confTemplatePath = $fileLocator
             ->locate('@FastVPSCpanelBundle/Resources/template/vhost.conf.dist');
 
     }
 
-    public function createHostFile($hostName) {
+    public function createHost($hostName) {
 
         try {
             $this->fs->mkdir($this->getNginxHostsDir() . $hostName, 0777);
-            $this->generateIndexFile($hostName);
+            $this->createDefaultIndex($hostName);
+            $this->createConfiguration($hostName);
+
         } catch (IOException $e) {
-            return self::$IO_ERROR;
+            return self::IO_ERROR;
         }
 
         $this->reloadNginx();
 
-        return self::$SUCCESS;
+        return self::SUCCESS;
     }
 
-    public function editHostFile($newHostName, $oldHostName) {
+    public function editHost($newHostName, $oldHostName) {
 
         try {
             $this->fs->rename($this->getNginxHostsDir() . $oldHostName,
                 $this->getNginxHostsDir() . $newHostName, false);
+
+            $this->renameConfiguration($oldHostName, $newHostName);
         } catch (IOException $e) {
-            return self::$IO_ERROR;
+            return self::IO_ERROR;
         }
 
         $this->reloadNginx();
 
-        return self::$SUCCESS;
+        return self::SUCCESS;
     }
 
-    public function removeHostFile($hostName) {
+    public function removeHost($hostName) {
 
         try {
             $this->fs->remove($this->getNginxHostsDir() . $hostName);
+            $this->removeConfiguration($hostName);
 
         } catch (IOException $e) {
-            return self::$IO_ERROR;
+            return self::IO_ERROR;
         }
 
         $this->reloadNginx();
 
-        return self::$SUCCESS;
+        return self::SUCCESS;
     }
 
     public function getNginxConfDir() {
@@ -98,36 +108,36 @@ class VirtualHostHandler {
      */
     private function reloadNginx() {
 
-        $process = new Process('service nginx reload');
+        $process = new Process($this->reloadNginxCommand);
 
         try {
             $process->run();
 
         } catch (ProcessFailedException $e) {
 
-            return self::$NGINX_RESTART_ERROR;
+            return self::NGINX_RESTART_ERROR;
 
         }
 
-        return self::$SUCCESS;
+        return self::SUCCESS;
 
     }
-
 
     /**
      * generates custom index.html from a template and places it
      * into the host directory
      */
-    private function generateIndexFile($hostName) {
+    private function createDefaultIndex($hostName) {
 
         try {
-            $this->fs->copy($this->indexTemplateFilePath,
-                $this->getNginxHostsDir() . $hostName . "/index.html");
+            $this->fs->copy($this->indexTemplatePath,
+                $this->getNginxHostsDir() . $hostName . "/" . self::$INDEX_FILENAME);
+
         } catch (IOException $e) {
-            return self::$IO_ERROR;
+            return self::IO_ERROR;
         }
 
-        return self::$SUCCESS;
+        return self::SUCCESS;
 
     }
 
@@ -136,16 +146,60 @@ class VirtualHostHandler {
      * generates host nginx configuration from a template and places it
      * into the nginx sites-enabled directory
      */
-    private function generateConfigurationFile($hostName) {
+    private function createConfiguration($hostName) {
+
+        $confPath = $this->getNginxConfDir() . $hostName . self::$CONF_EXTENSION;
+
+        $absHostPath = $this->getNginxHostsDir() . $hostName;
 
         try {
-            $this->fs->copy($this->indexTemplateFilePath, $this->getNginxHostsDir() . $hostName);
+
+            $file = file_get_contents($this->confTemplatePath);
+            $file = str_replace("%relpath%", $hostName, $file);
+            file_put_contents($confPath, $file);
+
+
         } catch (IOException $e) {
-            return self::$IO_ERROR;
+            return self::IO_ERROR;
         }
 
-        return self::$SUCCESS;
+        return self::SUCCESS;
 
     }
+
+    private function renameConfiguration($oldHostName, $newHostName) {
+
+        $oldConfPath = $this->getNginxConfDir() . $oldHostName . self::$CONF_EXTENSION;
+        $newConfPath = $this->getNginxConfDir() . $newHostName . self::$CONF_EXTENSION;
+
+        try {
+
+            $this->fs->rename($oldConfPath, $newConfPath);
+
+            $file = file_get_contents($newConfPath);
+            $file = str_replace($oldHostName, $newHostName, $file);
+            file_put_contents($newConfPath, $file);
+
+        } catch (IOException $e) {
+            return self::IO_ERROR;
+        }
+
+        return self::SUCCESS;
+
+    }
+
+    private function removeConfiguration($hostName) {
+
+        try {
+            $this->fs->remove($this->getNginxConfDir() . $hostName . self::$CONF_EXTENSION);
+
+        } catch (IOException $e) {
+            return self::IO_ERROR;
+        }
+
+        return self::SUCCESS;
+
+    }
+
 
 }

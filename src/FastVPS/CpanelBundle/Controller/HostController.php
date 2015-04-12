@@ -41,7 +41,7 @@ class HostController extends Controller {
             $host->setCreationDate();
 
             if($this->get('virtual_host_handler')
-                    ->createHostFile($host->getHostName()) == VirtualHostHandler::$SUCCESS) {
+                    ->createHost($host->getHostName()) == VirtualHostHandler::SUCCESS) {
                 $em->persist($host);
                 $em->flush();
             };
@@ -69,7 +69,7 @@ class HostController extends Controller {
         if ($form->isValid()) {
 
             if($this->get('virtual_host_handler')
-                    ->editHostFile($host->getHostName(), $oldHostName) == VirtualHostHandler::$SUCCESS) {
+                    ->editHost($host->getHostName(), $oldHostName) == VirtualHostHandler::SUCCESS) {
                 $em->persist($host);
                 $em->flush();
             }
@@ -90,7 +90,7 @@ class HostController extends Controller {
         $host = $em->getRepository("FastVPSCpanelBundle:Host")->findOneById($id);
 
         if($this->get('virtual_host_handler')
-                ->removeHostFile($host->getHostName()) == VirtualHostHandler::$SUCCESS) {
+                ->removeHost($host->getHostName()) == VirtualHostHandler::SUCCESS) {
             $em->remove($host);
             $em->flush();
         };
