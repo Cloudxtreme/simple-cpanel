@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0db3fcf8-f5cb-4bf0-94c3-98af9e0d10c1" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <ignored path="simple-cpanel.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -775,7 +774,13 @@
       <option name="project" value="LOCAL" />
       <updated>1428862917076</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="removed workspace.xml (lol)">
+      <created>1428863968669</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1428863968669</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -826,7 +831,8 @@
     <MESSAGE value="edit/remove/new host implementation" />
     <MESSAGE value="added possibility to create website directories" />
     <MESSAGE value="new feature: website directories are creating now!" />
-    <option name="LAST_COMMIT_MESSAGE" value="new feature: website directories are creating now!" />
+    <MESSAGE value="removed workspace.xml (lol)" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed workspace.xml (lol)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
