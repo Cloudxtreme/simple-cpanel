@@ -16,7 +16,7 @@
             {% for host in hosts %}
             <tr id="hostrow">
                 <td>{{ host.hostName }}</td>
-                <td>{{ nginx_hosts_dir }}/{{ host.hostName }}</td>
+                <td>{{ nginx_hosts_dir }}{{ host.hostName }}</td>
                 <td>{{ host.creationDate|date('Y-m-d') }}</td>
                 <td><div class="edithost_button">
                         <a class="pure-button" href="{{ path('fast_vps_cpanel_edithost', { 'id': host.id }) }}">

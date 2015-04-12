@@ -40,10 +40,11 @@ class HostController extends Controller {
 
             $host->setCreationDate();
 
-            $em->persist($host);
-            $em->flush();
-
-            $this->get('virtual_host_handler')->createHostFile($host);
+            if($this->get('virtual_host_handler')
+                    ->createHostFile($host->getHostName()) == VirtualHostHandler::$SUCCESS) {
+                $em->persist($host);
+                $em->flush();
+            };
 
             return $this->redirect($this->generateUrl("fast_vps_cpanel_homepage"));
 
@@ -59,37 +60,41 @@ class HostController extends Controller {
         $id = $this->getRequest()->get('id');
         $host = $em->getRepository("FastVPSCpanelBundle:Host")->findOneById($id);
 
+        $oldHostName = $host->getHostName();
+
         $form = $this->createForm(new EditHostType(), $host);
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
 
-            $em->persist($host);
-            $em->flush();
-
-            $this->get('virtual_host_handler')->editHostFile($host);
+            if($this->get('virtual_host_handler')
+                    ->editHostFile($host->getHostName(), $oldHostName) == VirtualHostHandler::$SUCCESS) {
+                $em->persist($host);
+                $em->flush();
+            }
 
             return $this->redirect($this->generateUrl("fast_vps_cpanel_homepage"));
 
         }
 
-        return $this->render('FastVPSCpanelBundle:Host:newhost.html.twig',
+        return $this->render('FastVPSCpanelBundle:Host:edithost.html.twig',
             array('form' => $form->createView()));
 
     }
 
     public function removeHostAction() {
 
-
         $em = $this->getDoctrine()->getManager();
         $id = $this->getRequest()->get('id');
         $host = $em->getRepository("FastVPSCpanelBundle:Host")->findOneById($id);
 
-        $em->remove($host);
-        $em->flush();
+        if($this->get('virtual_host_handler')
+                ->removeHostFile($host->getHostName()) == VirtualHostHandler::$SUCCESS) {
+            $em->remove($host);
+            $em->flush();
+        };
 
-        $this->get('virtual_host_handler')->removeHostFile($host);
 
         return $this->redirect($this->generateUrl("fast_vps_cpanel_homepage"));
 
