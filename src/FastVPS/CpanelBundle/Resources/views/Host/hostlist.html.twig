@@ -6,6 +6,12 @@
 
         <div id="newhost_button"><a class="pure-button" href="{{ path('fast_vps_cpanel_newhost') }}">New Host</a></div>
 
+            {% for flashMessage in app.session.flashbag.get('io_error') %}
+                <div class="flash-notice">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+
         <table id="hostlist">
             <tr>
                 <td><strong>Host</strong></td>

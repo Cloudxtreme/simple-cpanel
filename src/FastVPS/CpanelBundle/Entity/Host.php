@@ -7,12 +7,18 @@ use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\GeneratedValue;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
-use Doctrine\ORM\Mapping as ORM;
 
 /** @Entity
- * @ORM\Table(name="hosts")
- * @ORM\Entity(repositoryClass="FastVPS\CpanelBundle\EntityRepository\HostRepository")
+ * @Table(name="hosts")
+ * @Entity(repositoryClass="FastVPS\CpanelBundle\EntityRepository\HostRepository")
+ *
+ * @UniqueEntity(
+ *     fields={"hostName"},
+ *     message="This hostname is already in use."
+ * )
  */
 class Host {
 
@@ -24,10 +30,12 @@ class Host {
 
     /**
      * @Column(length=140, type="string", name="hostname", unique=true, nullable=false)
+     *  @Assert\NotBlank()
      */
     private $hostName;
 
-    /** @Column(type="datetime", name="creation_date") */
+    /** @Column(type="datetime", name="creation_date")
+     */
     private $creationDate;
 
 

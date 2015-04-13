@@ -9,8 +9,7 @@ class EditHostType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('hostname', 'text')
-        ->add('editor', 'textarea', array('mapped' => false))
+        $builder->add('hostname', 'text', array('label' => 'New host name'))
         ->add('save', 'submit', array('label' => 'Edit Host'));
     }
 

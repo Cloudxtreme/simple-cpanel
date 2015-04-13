@@ -2,8 +2,10 @@
 
 {% block content %}
 
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_start(form, { 'attr': {'class': 'pure-form form'} }) }}
+    {{ form_errors(form) }}
+    {{ form_widget(form.hostname) }}
+    {{ form_widget(form.save, { 'attr': {'class': 'pure-button pure-button-primary'} }) }}
     {{ form_end(form) }}
 
 {% endblock %}

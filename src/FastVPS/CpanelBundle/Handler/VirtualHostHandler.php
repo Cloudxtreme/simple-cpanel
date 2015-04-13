@@ -104,7 +104,7 @@ class VirtualHostHandler implements VirtualHostHandlerInterface {
 
     /**
      * reloads nginx process via shell
-     * (don't forget to insert a correct command into service parameters!)
+     * (don't forget to insert a correct command into service parameters if you need this!)
      */
     private function reloadNginx() {
 
@@ -149,8 +149,6 @@ class VirtualHostHandler implements VirtualHostHandlerInterface {
     private function createConfiguration($hostName) {
 
         $confPath = $this->getNginxConfDir() . $hostName . self::$CONF_EXTENSION;
-
-        $absHostPath = $this->getNginxHostsDir() . $hostName;
 
         try {
 

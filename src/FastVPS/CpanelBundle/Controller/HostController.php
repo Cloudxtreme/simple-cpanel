@@ -4,15 +4,13 @@ namespace FastVPS\CpanelBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
 use FastVPS\CpanelBundle\Form\NewHostType;
 use FastVPS\CpanelBundle\Form\EditHostType;
 use FastVPS\CpanelBundle\Entity\Host;
-
 use FastVPS\CpanelBundle\Handler\VirtualHostHandler;
 
-class HostController extends Controller {
 
+class HostController extends Controller {
 
     public function hostListAction() {
 
@@ -33,7 +31,6 @@ class HostController extends Controller {
 
         $host = new Host();
         $form = $this->createForm(new NewHostType(), $host);
-
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -44,6 +41,12 @@ class HostController extends Controller {
                     ->createHost($host->getHostName()) == VirtualHostHandler::SUCCESS) {
                 $em->persist($host);
                 $em->flush();
+
+            } else {
+                $request->getSession()->getFlashBag()->add(
+                    'io_error',
+                    $this->container->getParameter('vhost.error_message_uneditable_host')
+                );
             };
 
             return $this->redirect($this->generateUrl("fast_vps_cpanel_homepage"));
@@ -63,7 +66,6 @@ class HostController extends Controller {
         $oldHostName = $host->getHostName();
 
         $form = $this->createForm(new EditHostType(), $host);
-
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -72,6 +74,18 @@ class HostController extends Controller {
                     ->editHost($host->getHostName(), $oldHostName) == VirtualHostHandler::SUCCESS) {
                 $em->persist($host);
                 $em->flush();
+
+            } else if($host->getHostName() == $oldHostName) {
+                $request->getSession()->getFlashBag()->add(
+                    'io_error',
+                    $this->container->getParameter('vhost.error_message_not_changed')
+                );
+
+            } else {
+                $request->getSession()->getFlashBag()->add(
+                    'io_error',
+                    $this->container->getParameter('vhost.error_message_uneditable_host')
+                );
             }
 
             return $this->redirect($this->generateUrl("fast_vps_cpanel_homepage"));
@@ -83,7 +97,7 @@ class HostController extends Controller {
 
     }
 
-    public function removeHostAction() {
+    public function removeHostAction(Request $request) {
 
         $em = $this->getDoctrine()->getManager();
         $id = $this->getRequest()->get('id');
@@ -93,8 +107,12 @@ class HostController extends Controller {
                 ->removeHost($host->getHostName()) == VirtualHostHandler::SUCCESS) {
             $em->remove($host);
             $em->flush();
+        } else {
+            $request->getSession()->getFlashBag()->add(
+                'io_error',
+                $this->container->getParameter('vhost.error_message_uneditable_host')
+            );
         };
-
 
         return $this->redirect($this->generateUrl("fast_vps_cpanel_homepage"));
 

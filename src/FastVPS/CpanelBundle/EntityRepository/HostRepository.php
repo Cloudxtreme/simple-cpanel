@@ -8,11 +8,6 @@ class HostRepository extends EntityRepository {
 
     public function findAll() {
 
-/*        $q = $this->getEntityManager()
-            ->createQuery("SELECT h
-                               FROM FastVPSCpanelBundle:Host h
-                               ORDER BY h.hostName ASC");*/
-
         $result = $this->getEntityManager()
             ->createQueryBuilder()
             ->select('q')
