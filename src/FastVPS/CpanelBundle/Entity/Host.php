@@ -31,6 +31,12 @@ class Host {
     /**
      * @Column(length=140, type="string", name="hostname", unique=true, nullable=false)
      *  @Assert\NotBlank()
+     *  @Assert\Length(
+     *      min = 4,
+     *      max = 20,
+     *      minMessage = "Hostname must be at least {{ limit }} characters long",
+     *      maxMessage = "Hostname cannot be longer than {{ limit }} characters"
+     * )
      */
     private $hostName;
 

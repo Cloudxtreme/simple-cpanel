@@ -151,11 +151,9 @@ class VirtualHostHandler implements VirtualHostHandlerInterface {
         $confPath = $this->getNginxConfDir() . $hostName . self::$CONF_EXTENSION;
 
         try {
-
             $file = file_get_contents($this->confTemplatePath);
             $file = str_replace("%relpath%", $hostName, $file);
             file_put_contents($confPath, $file);
-
 
         } catch (IOException $e) {
             return self::IO_ERROR;
@@ -171,9 +169,7 @@ class VirtualHostHandler implements VirtualHostHandlerInterface {
         $newConfPath = $this->getNginxConfDir() . $newHostName . self::$CONF_EXTENSION;
 
         try {
-
             $this->fs->rename($oldConfPath, $newConfPath);
-
             $file = file_get_contents($newConfPath);
             $file = str_replace($oldHostName, $newHostName, $file);
             file_put_contents($newConfPath, $file);
