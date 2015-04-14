@@ -1,3 +1,11 @@
+parameters:
+    vhost.nginx_conf_dir: ~
+    vhost.nginx_hosts_dir: ~
+    vhost.nginx_reload_command: ~
+
+    vhost.error_message_not_changed: 'You have forgotten to rename the host, nothing has changed. :3'
+    vhost.error_message_uneditable_host: 'Unable to edit host: please check your directory structure and permissions.'
+
 services:
     virtual_host_handler:
         class:        FastVPS\CpanelBundle\Handler\VirtualHostHandler
