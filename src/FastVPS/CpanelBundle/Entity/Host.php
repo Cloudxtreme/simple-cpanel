@@ -31,6 +31,7 @@ class Host {
     /**
      * @Column(length=140, type="string", name="hostname", unique=true, nullable=false)
      *  @Assert\NotBlank()
+     *  @Assert\Regex("/^\w+\.\w+$/")
      *  @Assert\Length(
      *      min = 4,
      *      max = 20,
