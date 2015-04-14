@@ -92,17 +92,23 @@ class VirtualHostHandler implements VirtualHostHandlerInterface {
         return self::SUCCESS;
     }
 
+    /* returns nginx configuration dir
+     * with location files (edit this in app/parameters.yml)
+     */
     public function getNginxConfDir() {
 
         return $this->nginxConfDir;
     }
 
+    /* returns nginx hosts dir
+     * with a website data (edit this in app/parameters.yml)
+     */
     public function getNginxHostsDir() {
 
         return $this->nginxHostsDir;
     }
 
-    /**
+    /*
      * reloads nginx process via shell
      * (don't forget to insert a correct command into service parameters if you need this!)
      */
@@ -123,7 +129,7 @@ class VirtualHostHandler implements VirtualHostHandlerInterface {
 
     }
 
-    /**
+    /*
      * generates custom index.html from a template and places it
      * into the host directory
      */
@@ -142,7 +148,7 @@ class VirtualHostHandler implements VirtualHostHandlerInterface {
     }
 
 
-    /**
+    /*
      * generates host nginx configuration from a template and places it
      * into the nginx sites-enabled directory
      */
@@ -163,6 +169,9 @@ class VirtualHostHandler implements VirtualHostHandlerInterface {
 
     }
 
+    /*
+     * renames configuration file
+     */
     private function renameConfiguration($oldHostName, $newHostName) {
 
         $oldConfPath = $this->getNginxConfDir() . $oldHostName . self::$CONF_EXTENSION;
@@ -182,6 +191,9 @@ class VirtualHostHandler implements VirtualHostHandlerInterface {
 
     }
 
+    /*
+    * removes configuration file
+    */
     private function removeConfiguration($hostName) {
 
         try {
