@@ -1,9 +1,7 @@
-simple-cpanel
+FastVPS SimpleCpanel
+====================
 
-a tiny nginx vhost control panel built with Symfony2 + Doctrine ORM
-=============
-
-GUIDE (RUSSIAN):
+Guide (Russian):
 ----------------
 
 Функционал приложения:
