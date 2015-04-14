@@ -25,7 +25,7 @@ Guide (Russian)
 Установка
 --------------
 - Загрузить все данные проекта в директорию (например, /home/www/website.com/simple-cpanel/)
-- Указать в src/FastVPS/CpanelBundle/Resources/config/services.yml правильные директории для хостов и их конфигов (у меня это /home/www/dev.kolimaa.eu/simple-cpanel/web и /etc/nginx/cpanel.d/), создать их, изменить их права на 0777.
+- Указать в src/FastVPS/CpanelBundle/Resources/config/services.yml правильные директории для хостов и их конфигов (например, /home/www/website.com/simple-cpanel/web и /etc/nginx/cpanel.d/), создать их, изменить их права на 0777.
 - Там же указать команду для релоада nginx (запускающий приложение пользователь обязательно должен иметь на это права, либо сделать разрешение через /etc/sudoers); в том же файле настроить подключение к MySQL и указать созданную базу данных.
 - Создать nginx-конфигурацию для приложения вроде этой (APPLICATION_PATH - путь до директории с приложением, VHOST_CONFIG_PATH - путь до директории с конфигурациями сайтов)
 
